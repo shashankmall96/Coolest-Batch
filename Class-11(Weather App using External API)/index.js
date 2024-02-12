@@ -55,11 +55,11 @@ async function fetchData(target){
 
 function updateWeatherData(cityName , temperature , time , currentCondition , conditonLogo){
   cityField.innerText = cityName
-  temperatureField.innerText = temperature
+  temperatureField.innerText = temperature 
   dateField.innerText = time
   weatherField.innerText = currentCondition
   emojiField.src = conditonLogo
 }
 
-
+// It will fetch the data of Mumbai whenever we refresh the page
 fetchData('Mumbai')
