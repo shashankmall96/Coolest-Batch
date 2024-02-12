@@ -62,4 +62,4 @@ function updateWeatherData(cityName , temperature , time , currentCondition , co
 }
 
 
-//fetchData('Mumbai')
+fetchData('Mumbai')
