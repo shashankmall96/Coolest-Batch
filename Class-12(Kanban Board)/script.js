@@ -158,7 +158,7 @@ function handleLock(ticket, id) {
       ticketLockIcon.classList.remove(lockClass);
       ticketLockIcon.classList.add(unlockClass);
 
-      ticketTaskArea.setAttribute("contenteditable", "true");
+      ticketTaskArea.setAttribute('contenteditable', "true");
     } else {
       ticketLockIcon.classList.remove(unlockClass);
       ticketLockIcon.classList.add(lockClass);
@@ -186,7 +186,8 @@ removeBtn.addEventListener("click", function () {
 
 function handleRemoval(ticket, id) {
   ticket.addEventListener("click", function () {
-    if (!removeTaskFlag) return;
+    if (!removeTaskFlag) 
+    return;
 
     let idx = getIdx(id);
 
@@ -214,6 +215,7 @@ function handleColor(ticket, id) {
     currentColorIdx++;
 
     let newTicketColorIdx = currentColorIdx % colors.length;
+    // we are using modulo operator @ 1:09:19 in Kanban Board -3
     let newTicketColorValue = colors[newTicketColorIdx];
 
     ticketColorBand.classList.remove(currentColor);
