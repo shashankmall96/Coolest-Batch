@@ -4,14 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Counter</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div>
-      <h1>Counter</h1>
-
-      <span id="number">0</span>
+    <div class="container">
+      <h1>CounterApp</h1>
+      
+        <span id="number">0</span>
+      
       <div>
-        increment/decrement by <input id="factor" type="num" value="1" />
+        <!-- increment/decrement by  -->
+        <input id="factor" type="num" value="1" />
       </div>
 
       <div>
@@ -23,32 +26,5 @@
       </div>
     </div>
   </body>
-  <script>
-    let addBtn = document.querySelector('#add')
-    let incrementFactor = 1
-    let counterNumber = document.getElementById("number");
-    let incrementField = document.getElementById("factor");
-
-
-    incrementField.addEventListener("change", function (e) {
-      console.log(e);
-      incrementFactor = parseInt(e.target.value);
-
-      if (incrementFactor < 1) {
-        incrementFactor = 1;
-      }
-    });
-
-
-
-    addBtn.addEventListener('click',function(){
-      console.log("button working");
-      let total = parseInt(counterNumber.innerText) + incrementFactor
-
-      counterNumber.innerText = total;
-    })
-    
-
-
-  </script>
+  <script src="script.js"></script>
 </html>
