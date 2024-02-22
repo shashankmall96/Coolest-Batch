@@ -23,5 +23,32 @@
       </div>
     </div>
   </body>
-  <script></script>
+  <script>
+    let addBtn = document.querySelector('#add')
+    let incrementFactor = 1
+    let counterNumber = document.getElementById("number");
+    let incrementField = document.getElementById("factor");
+
+
+    incrementField.addEventListener("change", function (e) {
+      console.log(e);
+      incrementFactor = parseInt(e.target.value);
+
+      if (incrementFactor < 1) {
+        incrementFactor = 1;
+      }
+    });
+
+
+
+    addBtn.addEventListener('click',function(){
+      console.log("button working");
+      let total = parseInt(counterNumber.innerText) + incrementFactor
+
+      counterNumber.innerText = total;
+    })
+    
+
+
+  </script>
 </html>
