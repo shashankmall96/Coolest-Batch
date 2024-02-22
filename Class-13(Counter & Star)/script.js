@@ -22,7 +22,6 @@ incrementField.addEventListener("change", function (e) {
 addBtn.addEventListener("click", function () {
   console.log("button working");
   let total = parseInt(counterNumber.innerText) + incrementFactor;
-
   counterNumber.innerText = total;
 });
 
