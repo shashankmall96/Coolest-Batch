@@ -4,6 +4,7 @@ import Movies from "./components/Movies";
 import WatchList from "./components/WatchList";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
   const [watchlist, setWatchlist] = useState([]);
@@ -29,7 +30,7 @@ function App() {
             }
           />
 
-          <Route path="/WatchList" element={<WatchList />} />
+          <Route path="/WatchList" element={<WatchList watchList={watchlist} />} />
         </Routes>
       </BrowserRouter>
     </>

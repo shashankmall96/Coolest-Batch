@@ -10,7 +10,7 @@ function MovieCard({name, posterPath, movieObject, handleAddtoWatchList}) {
       }}
     >
       {/* Button */}
-      <div onClick={handleAddtoWatchList(movieObject)} className="m-4 flex justify-center h-8 w-8 items-center rounded-lg bg-gray-900/60">&#128525;</div> 
+      <div onClick={()=>handleAddtoWatchList(movieObject)} className="m-4 flex justify-center h-8 w-8 items-center rounded-lg bg-gray-900/60">&#128525;</div> 
 
       <div className="text-white w-full text-center text-xl p-2 bg-gray-900/70 rounded-lg">
         {name}
