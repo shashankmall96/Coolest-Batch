@@ -28,18 +28,18 @@ function WatchList({watchList}) {
             </thead>
 
           <tbody>
-            {watchList.map((movieObj)=>{
+            {watchList.map((movieObj)=>(
               <tr className='border-b-2'>
               <td className='flex items-center px-6 py-4'> 
-               <img className='h-[6rem] w-[10rem]' src='C:\Users\hp\OneDrive\Documents\Coolest Batch\React IMDB Project\vite-project\src\AvengerPic.jpg'/>
+               <img className='h-[6rem] w-[10rem]' src={`https://image.tmdb.org/t/p/original/${movieObj.poster_path}`}/>
                <div className='mx-4'>{movieObj.title}</div>
               </td>
-              <td>{movieObj.vote_averag}</td>
+              <td>{movieObj.vote_average}</td>
               <td>{movieObj.popularity}</td>
               <td>Genre</td>
               <td className='text-red-500'>Delete</td>
            </tr>
-            })}
+            ))}
                
                
           </tbody>
