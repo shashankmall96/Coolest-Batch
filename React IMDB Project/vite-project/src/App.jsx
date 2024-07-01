@@ -17,6 +17,7 @@ function App() {
   };
 
 
+
   useEffect(()=>{
     let moviesFromLocalStorage = localStorage.getItem('movies')
     if(!moviesFromLocalStorage){
@@ -39,7 +40,7 @@ function App() {
             }
           />
 
-          <Route path="/WatchList" element={<WatchList watchList={watchlist} />} />
+          <Route path="/WatchList" element={<WatchList watchList={watchlist} setWatchList={setWatchlist}/>} />
         </Routes>
       </BrowserRouter>
     </>
