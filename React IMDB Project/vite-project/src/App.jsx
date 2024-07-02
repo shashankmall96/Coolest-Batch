@@ -1,10 +1,13 @@
+import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Banner from "./components/Banner";
 import Movies from "./components/Movies";
 import WatchList from "./components/WatchList";
 
+import { MovieContext } from "./components/MovieContext";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+
 
 function App() {
   const [watchlist, setWatchlist] = useState([]);
@@ -29,19 +32,23 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <MovieContext.Provider value={{handleAddtoWatchList,watchlist}}>
         <NavBar />
         <Routes>
           <Route
             path="/"
             element={
               <>
-                <Banner /> <Movies handleAddtoWatchList={handleAddtoWatchList} watchlist={watchlist} />
+                <Banner/> 
+                <Movies/>
               </>
             }
           />
 
           <Route path="/WatchList" element={<WatchList watchList={watchlist} setWatchList={setWatchlist}/>} />
         </Routes>
+          
+      </MovieContext.Provider> 
       </BrowserRouter>
     </>
   );
