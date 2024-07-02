@@ -8,7 +8,6 @@ import { MovieContext } from "./components/MovieContext";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 function App() {
   const [watchlist, setWatchlist] = useState([]);
 
@@ -19,36 +18,49 @@ function App() {
     console.log(updatedWatchlist);
   };
 
+  const DeleteFromWatchList = (movieObj) => {
+    let filtredMovies = watchlist.filter((movie) => {
+      return movie.id != movieObj.id;
+    });
 
+    setWatchlist(filtredMovies);
+    localStorage.setItem("movies", JSON.stringify(filtredMovies));
+  };
 
-  useEffect(()=>{
-    let moviesFromLocalStorage = localStorage.getItem('movies')
-    if(!moviesFromLocalStorage){
-      return 
+  useEffect(() => {
+    let moviesFromLocalStorage = localStorage.getItem("movies");
+    if (!moviesFromLocalStorage) {
+      return;
     }
-    setWatchlist(JSON.parse(moviesFromLocalStorage))
-} , [])
+    setWatchlist(JSON.parse(moviesFromLocalStorage));
+  }, []);
 
   return (
     <>
       <BrowserRouter>
-      <MovieContext.Provider value={{handleAddtoWatchList,watchlist}}>
-        <NavBar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Banner/> 
-                <Movies/>
-              </>
-            }
-          />
+        <MovieContext.Provider
+          value={{ handleAddtoWatchList, watchlist, DeleteFromWatchList ,setWatchlist }}
+        >
+          <NavBar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Banner />
+                  <Movies />
+                </>
+              }
+            />
 
-          <Route path="/WatchList" element={<WatchList watchList={watchlist} setWatchList={setWatchlist}/>} />
-        </Routes>
-          
-      </MovieContext.Provider> 
+            <Route
+              path="/WatchList"
+              element={
+                <WatchList />
+              }
+            />
+          </Routes>
+        </MovieContext.Provider>
       </BrowserRouter>
     </>
   );

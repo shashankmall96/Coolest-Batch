@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext,useState, useEffect } from "react";
 import genreids from "../utility/genre";
+import { MovieContext } from "./MovieContext";
 
-function WatchList({ watchList, setWatchList, DeleteFromWatchList }) {
+function WatchList() {
+
+  const {watchlist , setWatchlist , DeleteFromWatchList} = useContext(MovieContext)
+
   const [search, setSearch] = useState("");
   const [genreList, setGenreList] = useState([]);
   const [currGenre, setCurrGenre] = useState("All Genres");
@@ -16,7 +20,7 @@ function WatchList({ watchList, setWatchList, DeleteFromWatchList }) {
   };
 
   useEffect(() => {
-    let temp = watchList.map((movieObj) => {
+    let temp = watchlist.map((movieObj) => {
       return genreids[movieObj.genre_ids[0]];
     });
 
@@ -27,14 +31,14 @@ function WatchList({ watchList, setWatchList, DeleteFromWatchList }) {
     setGenreList(["All Genres", ...temp]);
 
     //  console.log([...temp])
-  }, [watchList]);
+  }, [watchlist]);
 
   const handleAscnedingRatings = () => {
-    let sortedAscending = watchList.sort((movieObjA, movieObjB) => {
+    let sortedAscending = watchlist.sort((movieObjA, movieObjB) => {
       return movieObjA.vote_average - movieObjB.vote_average;
     });
 
-    setWatchList([...sortedAscending]);
+    setWatchlist([...sortedAscending]);
   };
 
   const handleDescendingRatings = () => {
@@ -42,7 +46,7 @@ function WatchList({ watchList, setWatchList, DeleteFromWatchList }) {
       return movieObjB.vote_average - movieObjA.vote_average;
     });
 
-    setWatchList([...sortedDescending]);
+    setWatchlist([...sortedDescending]);
   };
 
   return (
@@ -103,7 +107,7 @@ function WatchList({ watchList, setWatchList, DeleteFromWatchList }) {
           </thead>
 
           <tbody>
-            {watchList
+            {watchlist
               .filter((movieObj) => {
                 if (currGenre == "All Genres") {
                   return true;
